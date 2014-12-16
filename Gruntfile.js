@@ -1,11 +1,23 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
+		
+		pkg: grunt.file.readJSON('package.json'),
+
+		// UGLIFY
 		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */',
+				beautify: false, 
+				preserveComments: false 
+			},
 			build: {
-			    src: 'js/*.js', 
-				dest: 'build/js/*.min.js'
+			    src: 'js/main.js', 
+				dest: 'build/js/main.min.js'
 			}
 		}, 
+
+
+		// CSS MINIFY 
 		cssmin: {
 		  minify: {
 		    expand: true,
